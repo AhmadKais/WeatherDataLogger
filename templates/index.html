@@ -12,15 +12,5 @@
         <input type="text" id="city" name="city" required>
         <button type="submit">Get Weather</button>
     </form>
-    {% if weather.city %}
-        <div>
-            <h2>Weather in {{ weather.city }}:</h2>
-            <p>Temperature: {{ weather.temperature }} °C</p>
-            <p>Description: {{ weather.description }}</p>
-            <p><img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather icon"></p>
-        </div>
-    {% else %}
-        <p>Enter a city name to get the weather.</p>
-    {% endif %}
 </body>
 </html>

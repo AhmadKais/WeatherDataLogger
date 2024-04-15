@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report for {{ weather.city }}</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Current Weather in {{ weather.city }}</h1>
+    <div>
+        <p>Temperature: {{ weather.temperature }}°C</p>
+        <p>Description: {{ weather.description }}</p>
+        <p>Humidity: {{ weather.humidity }}%</p>
+        <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
+        <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather icon">
+    </div>
+    <div id="forecast_graph"></div>
+    <script>
+        var graphs = {{ graphJSON|safe }};
+        Plotly.newPlot('forecast_graph', graphs.data, graphs.layout);
+    </script>
+</body>
+</html>
