@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Report for {{ weather.city }}</title>
+    <title>Weather Forecast</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Current Weather in {{ weather.city }}</h1>
+    <h1>Weather in {{ weather.city }}</h1>
+    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="{{ weather.description }}">
+    <p>Temperature: {{ weather.temperature }}°C</p>
+    <p>Description: {{ weather.description }}</p>
+    <p>Humidity: {{ weather.humidity }}%</p>
+    <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
     <div>
-        <p>Temperature: {{ weather.temperature }}°C</p>
-        <p>Description: {{ weather.description }}</p>
-        <p>Humidity: {{ weather.humidity }}%</p>
-        <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
-        <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather icon">
+        <h2>5-Day Forecast from API</h2>
+        <div id="plot5Days"></div>
+        <script>
+            var plotData5Days = {{ graphJSON5Days|safe }};
+            Plotly.newPlot('plot5Days', plotData5Days.data, plotData5Days.layout);
+        </script>
     </div>
-    <div id="forecast_graph"></div>
-    <script>
-        var graphs = {{ graphJSON|safe }};
-        Plotly.newPlot('forecast_graph', graphs.data, graphs.layout);
-    </script>
+    <div>
+        <h2>2-Week Forecast from Model</h2>
+        <div id="plot2Weeks"></div>
+        <script>
+            var plotData2Weeks = {{ graphJSON2Weeks|safe }};
+            Plotly.newPlot('plot2Weeks', plotData2Weeks.data, plotData2Weeks.layout);
+        </script>
+    </div>
 </body>
 </html>
