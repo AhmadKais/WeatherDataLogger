@@ -27,6 +27,7 @@ this is a demo python project to try and use AWS
 - Replace `'YOUR_API_KEY'` in `app.py` with your actual API key.
 
 ## AWS Free Tier Warning and Billing Alerts Setup:
+- still not Done i will add more details when i am done 
 - Utilize AWS Free Tier services for deployment.
 - Set up billing alerts to avoid unexpected charges.
 - You can set up billing alerts in the AWS Billing and Cost Management console.
