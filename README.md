@@ -1,35 +1,64 @@
-this is a demo python project to try and use AWS 
-# Weather Forecast Web Application
+# Weather App
 
-## Project Overview and Objectives:
-- This project is a Flask web application that retrieves weather data using the OpenWeatherMap API.
-- Users can input a city name and view current weather information as well as weather forecasts for the next 5 days.
-- Additionally, a machine learning algorithm is implemented to predict the temperature for the next week based on historical data.
+This is a simple weather forecasting web application built with Python Flask, Plotly for data visualization, and OpenWeatherMap API for weather data.
 
-## Setup Instructions:
-1. Clone the GitHub repository:
-2. Install dependencies:
-- pip install flask==2.0.2
-3. Set up your OpenWeatherMap API key:
-- Sign up for an API key [here](https://home.openweathermap.org/users/sign_up).
-- Replace `'YOUR_API_KEY'` in `app.py` with your actual API key.
-- use your own personal API key instaed of mine
-4. Run the Flask application:
-  
-## Usage Guide:
-- Open the application in your web browser.
-- Enter a city name and click "Get Weather" to view current weather information and a forecast for the next 5 days.
-- View the machine learning prediction for the next week's temperature.
+## Getting Started
 
-## Instructions for Making API Calls:
-- The application makes API calls to the OpenWeatherMap API.
-- You need to sign up for an API key [here](https://home.openweathermap.org/users/sign_up).
-- Replace `'YOUR_API_KEY'` in `app.py` with your actual API key.
+### Prerequisites
 
-## AWS Free Tier Warning and Billing Alerts Setup:
-- still not Done i will add more details when i am done 
-- Utilize AWS Free Tier services for deployment.
-- Set up billing alerts to avoid unexpected charges.
-- You can set up billing alerts in the AWS Billing and Cost Management console.
+- PyCharm (Any IDE that supports Python)
+- Python 3.x installed on your system
+- Basic knowledge of using a command-line interface (Terminal on macOS/Linux, Command Prompt or PowerShell on Windows)
 
+### Installation
+
+1. **Clone the repository:**
+    - Open your terminal (Command Prompt on Windows).
+    - Change the current working directory to the location where you want the cloned directory.
+    - Type the following command and press Enter:
+        ```
+        git clone https://github.com/AhmadKais/WeatherDataLogger
+        ```
+        
+2. **Install dependencies:**
+    - Open PyCharm.
+    - Open the project folder `WeatherDataLogger`.
+    - Open a terminal inside PyCharm:
+        - Click on `View` from the top menu.
+        - Select `Tool Windows`.
+        - Click on `Terminal`.
+    - In the terminal, type the following command and press Enter:
+        ```
+        pip install -r requirements.txt
+        ```
+
+### Usage
+
+1. **Set up OpenWeatherMap API Key:**
+    - Sign up on [OpenWeatherMap](https://openweathermap.org/) and get your API key.
+    - Open the `app.py` file in the project.
+    - Replace `YOUR_API_KEY` with your actual API key:
+        ```python
+        API_KEY = "YOUR_API_KEY"
+        ```
+
+2. **Run the application:**
+    - In PyCharm, make sure the `app.py` file is open.
+    - Right-click on `app.py` in the Project Explorer (on the left).
+    - Choose `Run 'app'`.
+    - Wait for a few moments for the server to start.
+    - Once the server is running, open a web browser and go to `http://127.0.0.1:5000/`.
+
+3. **View Weather Data:**
+    - Enter the name of the city you want to check the weather for.
+    - Click on the `Check Weather` button.
+    - You will see the current weather data along with a temperature forecast chart for the next 5 days and a prediction for the next 2 weeks.
+
+4. **Stop the application:**
+    - To stop the application, go back to PyCharm.
+    - Press `Ctrl + C` in the terminal window where the Flask server is running.
+
+## Support
+
+If you have any questions or need assistance, please feel free to contact me at [ahmadqais1997@gmail.com].
 
