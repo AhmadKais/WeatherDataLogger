@@ -29,7 +29,12 @@ This is a simple weather forecasting web application built with Python Flask, Pl
         - Click on `Terminal`.
         - or you can pres `Alt + f12`
     - In the terminal, type the following command and press Enter:
-        ```
+      this command will change the directory the requirements file dir :
+      - ```sh
+        cd WeatherDataLogger
+        ```  
+    - this command will install the required libraries 
+      - ```sh
         pip install -r requirements.txt
         ```
 
