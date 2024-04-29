@@ -27,6 +27,7 @@ This is a simple weather forecasting web application built with Python Flask, Pl
         - Click on `View` from the top menu.
         - Select `Tool Windows`.
         - Click on `Terminal`.
+        - or you can pres `Alt + f12`
     - In the terminal, type the following command and press Enter:
         ```
         pip install -r requirements.txt
