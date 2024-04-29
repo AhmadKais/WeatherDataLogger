@@ -41,7 +41,6 @@ This is a simple weather forecasting web application built with Python Flask, Pl
       - ```sh
         python app.py
         ```
-    - click on the socket number in the terminal (something ike this : 27.00.000) 
 
 ### Usage
 
@@ -57,6 +56,7 @@ This is a simple weather forecasting web application built with Python Flask, Pl
     - In PyCharm, make sure the `app.py` file is open.
     - Right-click on `app.py` in the Project Explorer (on the left).
     - Choose `Run 'app'`.
+    - if this does not work open the terminal and type `python app.py` then press enter
     - Wait for a few moments for the server to start.
     - Once the server is running, open a web browser and go to `http://127.0.0.1:5000/`.
 
