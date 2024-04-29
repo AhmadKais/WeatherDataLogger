@@ -37,6 +37,11 @@ This is a simple weather forecasting web application built with Python Flask, Pl
       - ```sh
         pip install -r requirements.txt
         ```
+    - this command will run the program 
+      - ```sh
+        python app.py
+        ```
+    - click on the socket number in the terminal (something ike this : 27.00.000) 
 
 ### Usage
 
