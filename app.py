@@ -7,10 +7,18 @@ import plotly.express as px
 import json
 from datetime import datetime, timedelta
 import numpy as np
+import boto3
+from boto3.dynamodb.conditions import Key
+from decimal import Decimal
 
 app = Flask(__name__)
 
 API_KEY = "5adbdb49da633f1f95e880a52e1ea962"
+DYNAMODB_REGION_NAME = "eu-north-1"
+DYNAMODB_TABLE_NAME = "WeatherData"
+
+dynamodb = boto3.resource('dynamodb', region_name=DYNAMODB_REGION_NAME)
+table = dynamodb.Table(DYNAMODB_TABLE_NAME)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -35,16 +43,16 @@ def weather(city):
 
         current_weather = {
             'city': city,
-            'temperature': current_data['main']['temp'],
+            'temperature': Decimal(str(current_data['main']['temp'])),  # Convert to Decimal
             'description': current_data['weather'][0]['description'],
-            'humidity': current_data['main']['humidity'],
-            'wind_speed': current_data['wind']['speed'],
+            'humidity': Decimal(str(current_data['main']['humidity'])),  # Convert to Decimal
+            'wind_speed': Decimal(str(current_data['wind']['speed'])),  # Convert to Decimal
             'icon': current_data['weather'][0]['icon']
         }
 
         forecasts = [{
             'time': item['dt_txt'],
-            'temp': item['main']['temp'],
+            'temp': Decimal(str(item['main']['temp'])),  # Convert to Decimal
             'description': item['weather'][0]['main']
         } for item in forecast_data['list']]
 
@@ -57,6 +65,9 @@ def weather(city):
         # Convert plots to JSON for JavaScript in HTML
         five_day_plot_json = json.dumps(five_day_plot, cls=plotly.utils.PlotlyJSONEncoder)
         two_week_plot_json = json.dumps(two_week_plot, cls=plotly.utils.PlotlyJSONEncoder)
+
+        # Save weather data to DynamoDB
+        save_weather_data_to_dynamodb(current_weather)
 
         return render_template('weather.html', weather=current_weather,
                                graphJSON5Days=five_day_plot_json,
@@ -85,6 +96,19 @@ def create_temperature_plot(df):
     fig = px.line(df, x='time', y='temp', title='Temperature Forecast',
                   labels={'time': 'Time', 'temp': 'Temperature (°C)'})
     return fig
+
+
+def save_weather_data_to_dynamodb(weather_data):
+    table.put_item(
+        Item={
+            'city': weather_data['city'],
+            'temperature': str(weather_data['temperature']),
+            'description': weather_data['description'],
+            'humidity': weather_data['humidity'],
+            'wind_speed': weather_data['wind_speed'],
+            'icon': weather_data['icon']
+        }
+    )
 
 
 if __name__ == '__main__':

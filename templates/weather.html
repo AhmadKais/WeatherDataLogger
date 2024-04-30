@@ -2,32 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Weather in {{ weather.city }}</h1>
-    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="{{ weather.description }}">
+    <h1>Weather Forecast for {{ weather.city }}</h1>
+    <h2>Current Weather</h2>
     <p>Temperature: {{ weather.temperature }}°C</p>
     <p>Description: {{ weather.description }}</p>
     <p>Humidity: {{ weather.humidity }}%</p>
     <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
-    <div>
-        <h2>5-Day Forecast from API</h2>
-        <div id="plot5Days"></div>
-        <script>
-            var plotData5Days = {{ graphJSON5Days|safe }};
-            Plotly.newPlot('plot5Days', plotData5Days.data, plotData5Days.layout);
-        </script>
-    </div>
-    <div>
-        <h2>2-Week Forecast from Model</h2>
-        <div id="plot2Weeks"></div>
-        <script>
-            var plotData2Weeks = {{ graphJSON2Weeks|safe }};
-            Plotly.newPlot('plot2Weeks', plotData2Weeks.data, plotData2Weeks.layout);
-        </script>
-    </div>
+    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather Icon">
+
+    <div id="graphDiv1"></div>
+    <div id="graphDiv2"></div>
+
+    <!-- Display a message if weather data is saved to DynamoDB -->
+    {% if saved_to_dynamodb %}
+    <p style="color: green;">Weather data has been saved to DynamoDB.</p>
+    {% endif %}
+
+    <script>
+        // Plotly graphs
+        var graph1 = {{ graphJSON5Days | safe }};
+        var graph2 = {{ graphJSON2Weeks | safe }};
+        Plotly.newPlot('graphDiv1', graph1.data, graph1.layout);
+        Plotly.newPlot('graphDiv2', graph2.data, graph2.layout);
+    </script>
 </body>
 </html>

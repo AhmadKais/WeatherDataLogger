@@ -68,8 +68,48 @@ This is a simple weather forecasting web application built with Python Flask, Pl
 4. **Stop the application:**
     - To stop the application, go back to PyCharm.
     - Press `Ctrl + C` in the terminal window where the Flask server is running.
+### AWS Setup
+
+1. **Install AWS CLI:**
+    - Download and install AWS CLI from [here](https://aws.amazon.com/cli/).
+
+2. **Configure AWS CLI:**
+    - Open your terminal (Command Prompt on Windows).
+    - Type the following command and press Enter:
+        ```sh
+        aws configure
+        ```
+    - Enter your AWS Access Key ID, AWS Secret Access Key, default region name, and default output format as prompted.
+    - you get these from your AWS account manager i suggest using chatGPT for more precise instructions
+    - even i got lost i cant help anymore i bearly understand what i did .
+    - 
+      Example:
+      ```sh
+      AWS Access Key ID [None]: *****************
+      AWS Secret Access Key [None]: **********************
+      Default region name [None]: eu-north-1
+      Default output format [None]: json
+      ```
+
+3. **Create a DynamoDB Table:**
+    - Open your terminal.
+    - Type the following command and press Enter to create a DynamoDB table named "WeatherData":
+      ```sh
+      aws dynamodb create-table --table-name WeatherData --attribute-definitions AttributeName=city,AttributeType=S AttributeName=timestamp,AttributeType=N --key-schema AttributeName=city,KeyType=HASH AttributeName=timestamp,KeyType=RANGE --billing-mode PAY_PER_REQUEST
+      ```
+    - Wait for the table to be created.
+
+4. **View DynamoDB Table:**
+    - To view the data stored in your DynamoDB table:
+        - Go to the [AWS Management Console](https://aws.amazon.com/console/).
+        - Open the DynamoDB service.
+        - Select the region where your table is located (in your case, "eu-north-1").
+        - Click on the "Tables" link in the left navigation pane.
+        - Click on your table name ("WeatherData") to view its details.
+        - Click on the "Items" tab to view the data stored in your table.
 
 ## Support
 
 If you have any questions or need assistance, please feel free to contact me at [ahmadqais1997@gmail.com].
+
 
