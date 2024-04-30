@@ -113,3 +113,18 @@ This is a simple weather forecasting web application built with Python Flask, Pl
 If you have any questions or need assistance, please feel free to contact me at [ahmadqais1997@gmail.com].
 
 
+## I will add some screenshots it  may help :
+   - the first page of the website :
+   ![First Page in the app](first%20page.jpeg)
+   - second page the city's info :
+   ![second page](city%20temperature.jpeg)
+   ![ML prediction](two%20weeks%20prediction.jpeg)
+   - CMD commands:
+   ![CMD](CMD%20AWS%20connection.jpeg)
+   - weather table in AWS website : 
+   ![weather table](WeatherTable.jpeg)
+   - stored data so far : 
+   ![Stored Data](previous%20searches.jpeg)
+# THANK YOU FOR YOUR PATIENCE HAVE A NICE DAY
+
+
